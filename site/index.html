@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier des sources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></div><h1>Atelier des sources</h1></div>
+    <div class="row">
+      <span class="tag"><small>Client</small>SDIS 2A</span><span class="tag"><small>Territoire</small>Corse-du-Sud</span>
+      <span class="tag"><small>Saison</small>2027</span><span class="tag"><small>Cours</small>UE01.A</span>
+    </div>
+    <div class="row">
+      <nav class="nav"><a href="#pipeline">Pipeline</a><a href="#coverage">Couverture maximale</a><a href="#solution">Acheminement</a><a href="#learning">Apprentissage</a></nav>
+      <button type="button" id="playBtn" class="chip" aria-pressed="true">Pause</button>
+      <label class="speed">Vitesse <input type="range" id="speed" min="0.25" max="3" step="0.25" value="1"></label>
+    </div>
+  </header>
+
+  <section id="pipeline" class="plate">
+    <div class="plate-head"><h2>Pipeline de données</h2><span class="plate-no">1 / 4</span></div>
+    <div class="graph-scroll"><svg id="graph" viewBox="0 0 1500 590" role="img" aria-label="Pipeline de données : neuf sources vers une base finale, puis requêtes de décision et modèles"></svg></div>
+    <div class="plate-foot"><p class="desc">Le trajet des données : des neuf sources, par les couches brute, préparation et consolidée, jusqu'au schéma en étoile et à la base finale. Celle-ci alimente les requêtes de décision et l'étape 2. Cliquez sur une source pour ses liens et ce que nous en avons tiré.</p><div class="legend"><span class="key"><i class="dot done"></i>données en circulation</span><span class="key"><i class="dot prog"></i>en partie construit</span><span class="key"><i class="dot todo"></i>prévu</span><span class="key"><i class="dot gap"></i>pas encore de données</span></div></div>
+  </section>
+  <section id="coverage" class="plate">
+    <div class="plate-head"><h2>Moteur de couverture maximale</h2><span class="plate-no">2 / 4</span></div>
+    <div class="graph-scroll"><svg id="graph4" viewBox="0 0 1500 540" role="img" aria-label="Moteur de couverture maximale : temps de trajet, optimisation, plan de positionnement, contrôle"></svg></div>
+    <div class="plate-foot"><p class="desc">Avant tout feu : le moteur cherche où placer les unités et où les faire patrouiller pour que la plus grande part du risque soit atteignable dans le temps visé. Il surveille cette couverture quand des unités partent. Proposition à valider.</p><div class="legend"><span class="key"><i class="dot plan"></i>flux prévu</span><span class="key"><i class="dot todo"></i>prévu</span><span class="key"><i class="dot gap"></i>données manquantes</span></div></div>
+  </section>
+  <section id="solution" class="plate">
+    <div class="plate-head"><h2>Moteur d'acheminement du personnel</h2><span class="plate-no">3 / 4</span></div>
+    <div class="graph-scroll"><svg id="graph2" viewBox="0 0 1400 560" role="img" aria-label="Moteur d'acheminement du personnel vers le feu : routes, itinéraires, dimensionnement, engagement, instructions"></svg></div>
+    <div class="plate-foot"><p class="desc">Pendant un feu : le moteur construit le graphe routier, propose des itinéraires, dimensionne les moyens, affecte les unités et rédige les ordres. Il tient compte du plan de couverture. Seul un prototype sur données fictives existe.</p><div class="legend"><span class="key"><i class="dot plan"></i>flux prévu</span><span class="key"><i class="dot prog"></i>en partie dans nos sources</span><span class="key"><i class="dot gap"></i>données manquantes</span></div></div>
+  </section>
+  <section id="learning" class="plate">
+    <div class="plate-head"><h2>Comment le modèle d'engagement apprend</h2><span class="plate-no">4 / 4</span></div>
+    <div class="graph-scroll"><svg id="graph3" viewBox="0 0 1500 475" role="img" aria-label="Boucle d'apprentissage par renforcement : simulateur, état, agent, action, récompense, évaluation face au solveur"></svg></div>
+    <div class="plate-foot"><p class="desc">L'agent d'apprentissage par renforcement s'entraîne dans un simulateur, puis est comparé au solveur actuel. Il n'est retenu que s'il fait mieux, et une personne valide toujours.</p><div class="legend"><span class="key"><i class="dot plan"></i>flux prévu</span><span class="key"><i class="dot prog"></i>en partie dans nos sources</span><span class="key"><i class="dot gap"></i>données manquantes</span></div></div>
+  </section>
+</div>
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="sheet-head"><div><div class="sid" id="mId"></div><h2 id="mTitle"></h2><div class="pub" id="mPub"></div></div><button type="button" class="xbtn" id="mClose" aria-label="Fermer">&times;</button></div>
+    <div><h3>Ce que c'est</h3><p id="mWhat"></p></div>
+    <div><h3>Liens</h3><div class="links" id="mLinks"></div></div>
+    <div><h3>Ce que nous avons obtenu</h3><ul class="got" id="mGot"></ul></div>
+    <div id="mCavBox"><h3>À surveiller</h3><ul class="cav" id="mCav"></ul></div>
+  </div>
+</div>
+<script src="data.js"></script>
+<script src="sources_fire.js"></script>
+<script src="sources_index.js"></script>
+<script src="sources_territory.js"></script>
+<script src="app.js"></script>
+<script src="model.js"></script>
+<script src="cover.js"></script>
+<script src="rl.js"></script>
+<script src="modal.js"></script>
+</body>
+</html>
